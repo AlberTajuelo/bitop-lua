@@ -1,6 +1,6 @@
 # Bitop-lua
 
-[![Build Status](https://travis-ci.org/albertajuelo/bitop-lua.svg)](https://travis-ci.org/albertajuelo/bitop-lua)
+[![Build Status](https://travis-ci.org/AlberTajuelo/bitop-lua.svg)](https://travis-ci.org/AlberTajuelo/bitop-lua)
 
 This package provides bitwise operations implemented entirely in Lua.
 
