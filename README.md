@@ -7,18 +7,22 @@ This package provides bitwise operations implemented entirely in Lua.
 Includes Lua 5.2 'bit32' and (LuaJIT) LuaBitOp 'bit' compatibility interfaces.
 
 This library implements bitwise operations entirely in Lua.
-This module is typically intended if for some reasons you don't want to or cannot  install a popular C based bit library like BitOp 'bit' [1] (which comes pre-installed with LuaJIT) or 'bit32' (which comes pre-installed with Lua 5.2) but want a similar interface.
+This module is typically intended if for some reasons you don't want to or cannot install a popular C based bit library like BitOp 'bit' [1] (which comes pre-installed with LuaJIT) or 'bit32' (which comes pre-installed with Lua 5.2) but want a similar interface.
 
 This modules represents bit arrays as non-negative Lua numbers. [1] It can represent 32-bit bit arrays when Lua is compiled
 with lua_Number as double-precision IEEE 754 floating point.
 
-The module is nearly the most efficient it can be but may be a few times slower than the C based bit libraries and is orders or magnitude slower than LuaJIT bit operations, which compile to native code.  Therefore, this library is inferior in performane to the other modules.
+The module is nearly the most efficient it can be but may be a few times slower than the C based bit libraries and is orders or magnitude slower than LuaJIT bit operations, which compile to native code. Therefore, this library is inferior in performane to the other modules.
 
 The `xor` function in this module is based partly on Roberto Ierusalimschy's post in http://lua-users.org/lists/lua-l/2002-09/msg00134.html .
 
 The included BIT.bit32 and BIT.bit sublibraries aims to provide 100% compatibility with the Lua 5.2 "bit32" and (LuaJIT) LuaBitOp "bit" library.
 
 This compatbility is at the cost of some efficiency since inputted numbers are normalized and more general forms (e.g. multi-argument bitwise operators) are supported.
+
+## Origin
+
+This repository is based on David Manura (@davidm) work: https://github.com/davidm/lua-bit-numberlua
 
 ## Requirements
 
@@ -27,37 +31,53 @@ None (other than Lua 5.1 or 5.2).
 ## Usage
 
 ```lua
-  local bit = require 'bit.numberlua'
-  print(bit.bor(0xff00ff00, 0x00ff00ff)) --> 0xffffffff
-  
-  -- Interface providing strong Lua 5.2 'bit32' compatibility
-  local bit32 = require 'bit.numberlua'.bit32
-  assert(bit32.band(-1) == 0xffffffff)
-  
-  -- Interface providing strong (LuaJIT) LuaBitOp 'bit' compatibility
-  local bit = require 'bit.numberlua'.bit
-  assert(bit.tobit(0xffffffff) == -1)
-  
+
+local bit = require 'bit.numberlua'
+print(bit.bor(0xff00ff00, 0x00ff00ff)) --> 0xffffffff
+
+-- Interface providing strong Lua 5.2 'bit32' compatibility
+local bit32 = require 'bit.numberlua'.bit32
+assert(bit32.band(-1) == 0xffffffff)
+
+-- Interface providing strong (LuaJIT) LuaBitOp 'bit' compatibility
+local bit = require 'bit.numberlua'.bit
+assert(bit.tobit(0xffffffff) == -1)
+
 
 ```
 
 ## Download/Installation
 
-  If using LuaRocks:
-    luarocks install lua-bit-numberlua
+If using LuaRocks:
+```
+luarocks install lua-bit-numberlua
+```
 
-  Otherwise, download <https://github.com/AlberTajuelo/bitop-lua/zipball/master>.
-  Alternately, if using git:
-    git clone git://github.com/AlberTajuelo/bitop-lua.git
-    cd bitop-lua
-  Optionally unpack:
-    ./util.mk
-  or unpack and install in LuaRocks:
-    ./util.mk install
+Otherwise, download <https://github.com/AlberTajuelo/bitop-lua/zipball/master>.
+
+Alternately, if using GIT:
+
+```
+git clone git://github.com/AlberTajuelo/bitop-lua.git
+
+cd bitop-lua 
+```
+
+Optionally unpack:
+
+```
+./util.mk
+```
+
+or unpack and install in LuaRocks:
+
+```
+./util.mk install
+```
 
 ## API
 
-API
+
 
   BIT.tobit(x) --> z
   
@@ -123,8 +143,7 @@ API
 
   BIT.bit32
   
-    This table contains functions that aim to provide 100% compatibility
-    with the Lua 5.2 "bit32" library.
+    This table contains functions that aim to provide 100% compatibility with the Lua 5.2 "bit32" library.
     
     bit32.arshift (x, disp) --> z
     bit32.band (...) --> z
@@ -141,8 +160,7 @@ API
 
   BIT.bit
   
-    This table contains functions that aim to provide 100% compatibility
-    with the LuaBitOp "bit" library (from LuaJIT).
+This table contains functions that aim to provide 100% compatibility with the LuaBitOp "bit" library (from LuaJIT).
     
     bit.tobit(x) --> y
     bit.tohex(x [,n]) --> y
@@ -160,21 +178,16 @@ API
 
 ## Testing Status
 
-  WARNING: Not all corner cases have been tested and documented.
-  Some attempt was made to make these similar to the Lua 5.2 [2]
-  and LuaJit BitOp [3] libraries, but this is not fully tested and there
-  are currently some differences.  Addressing these differences may
-  be improved in the future but it is not yet fully determined how to
-  resolve these differences.
-  
-  The BIT.bit32 library passes the Lua 5.2 test suite (bitwise.lua)
-  http://www.lua.org/tests/5.2/ .  The BIT.bit library passes the LuaBitOp
-  test suite (bittest.lua).  However, these have not been tested on
-  platforms with Lua compiled with 32-bit integer numbers.
+WARNING: Not all corner cases have been tested and documented.
+
+Some attempt was made to make these similar to the Lua 5.2 [2] and LuaJit BitOp [3] libraries, but this is not fully tested and there are currently some differences. Addressing these differences may be improved in the future but it is not yet fully determined how to resolve these differences.
+
+The BIT.bit32 library passes the Lua 5.2 test suite (bitwise.lua) http://www.lua.org/tests/5.2/ . The BIT.bit library passes the LuaBitOp test suite (bittest.lua). However, these have not been tested on platforms with Lua compiled with 32-bit integer numbers.
 
 ## References
 
-  [1] http://lua-users.org/wiki/FloatingPoint
-  [2] http://www.lua.org/manual/5.2/
-  [3] http://bitop.luajit.org/
-  
+[1] http://lua-users.org/wiki/FloatingPoint
+
+[2] http://www.lua.org/manual/5.2/
+
+[3] http://bitop.luajit.org/
