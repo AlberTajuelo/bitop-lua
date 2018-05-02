@@ -42,15 +42,13 @@ assert(bit32.band(-1) == 0xffffffff)
 -- Interface providing strong (LuaJIT) LuaBitOp 'bit' compatibility
 local bit = require 'bit.numberlua'.bit
 assert(bit.tobit(0xffffffff) == -1)
-
-
 ```
 
 ## Download/Installation
 
 If using LuaRocks:
 ```
-luarocks install lua-bit-numberlua
+luarocks install bitop-lua
 ```
 
 Otherwise, download <https://github.com/AlberTajuelo/bitop-lua/zipball/master>.

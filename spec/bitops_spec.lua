@@ -101,13 +101,6 @@ describe('bit.numberlua class', function()
       checkeq(bit.arshift(0x7fffffff, 31), 0)
       checkeq(bit.arshift(0x7fffffff, 32), 0)
 
-      -- BIT.bit32.
-      -- Optionally run bitwise.lua from Lua test suite.
-      -- http://www.lua.org/tests/5.2/
-      if TEST_BIT32 then
-        _G.bit32 = require 'bit.numberlua' . bit32
-        dofile 'contrib/bitwise.lua'
-      end
       -- additional tests:
       -- trigger recursion... (once broken)
       checkeq(bit.bit32.bor (1,2,4,8,16,2^30,2^31), 0xc000001f)
@@ -115,29 +108,6 @@ describe('bit.numberlua class', function()
       checkeq(bit.bit32.bxor(-1,-1,-1,-1,-1), 2^32-1)
       checkeq(bit.bit32.band(255,255*2,255*4,255*8,255*16), 255-15)
 
-      -- BIT.bit
-      -- Optionally run bittest.lua (included) from LuaBitOp test suite.
-      -- http://bitop.luajit.org/
-      --if TEST_BIT then
-        package.loaded.bit = bit.bit
-        dofile 'contrib/bittest.lua'
-      --end
-
-      -- BIT.bit.
-
-
-
     end)
-
   end)
 end)
-
-
-
-
-
-
-
-
-
-

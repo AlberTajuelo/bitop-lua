@@ -1,7 +1,7 @@
 -- This file was taken from LuaBitOp http://bitop.luajit.org/ .
 -- Test cases for bit operations library. Public domain.
 
-local bit = require"bit"
+local bit = require 'bit.numberlua'.bit
 
 local vb = {
   0, 1, -1, 2, -2, 0x12345678, 0x87654321,
@@ -55,31 +55,41 @@ local function check_shift(name, r)
   check_binop_range(name, r, 0, 31)
 end
 
--- Minimal sanity checks.
-assert(0x7fffffff == 2147483647, "broken hex literals")
-assert(0xffffffff == -1 or 0xffffffff == 2^32-1, "broken hex literals")
-assert(tostring(-1) == "-1", "broken tostring()")
-assert(tostring(0xffffffff) == "-1" or tostring(0xffffffff) == "4294967295", "broken tostring()")
 
--- Basic argument processing.
-assert(bit.tobit(1) == 1)
-assert(bit.band(1) == 1)
-assert(bit.bxor(1,2) == 3)
-assert(bit.bor(1,2,4,8,16,32,64,128) == 255)
+describe('bit.numberlua class', function()
+  describe('should do operations with bit', function()
 
--- Apply operations to test vectors and compare checksums.
-check_unop("tobit", 277312)
-check_unop("bnot", 287870)
-check_unop("bswap", 307611)
+    it('should work for different bit operations', function()
 
-check_binop("band", 41206764)
-check_binop("bor", 51253663)
-check_binop("bxor", 79322427)
+      -- Minimal sanity checks.
+      assert(0x7fffffff == 2147483647, "broken hex literals")
+      assert(0xffffffff == -1 or 0xffffffff == 2^32-1, "broken hex literals")
+      assert(tostring(-1) == "-1", "broken tostring()")
+      assert(tostring(0xffffffff) == "-1" or tostring(0xffffffff) == "4294967295", "broken tostring()")
 
-check_shift("lshift", 325260344)
-check_shift("rshift", 139061800)
-check_shift("arshift", 111364720)
-check_shift("rol", 302401155)
-check_shift("ror", 302316761)
+      -- Basic argument processing.
+      assert(bit.tobit(1) == 1)
+      assert(bit.band(1) == 1)
+      assert(bit.bxor(1,2) == 3)
+      assert(bit.bor(1,2,4,8,16,32,64,128) == 255)
 
-check_binop_range("tohex", 47880306, -8, 8)
+      -- Apply operations to test vectors and compare checksums.
+      check_unop("tobit", 277312)
+      check_unop("bnot", 287870)
+      check_unop("bswap", 307611)
+
+      check_binop("band", 41206764)
+      check_binop("bor", 51253663)
+      check_binop("bxor", 79322427)
+
+      check_shift("lshift", 325260344)
+      check_shift("rshift", 139061800)
+      check_shift("arshift", 111364720)
+      check_shift("rol", 302401155)
+      check_shift("ror", 302316761)
+
+      check_binop_range("tohex", 47880306, -8, 8)
+
+    end)
+  end)
+end)
