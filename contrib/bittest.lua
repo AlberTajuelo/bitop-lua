@@ -83,4 +83,3 @@ check_shift("rol", 302401155)
 check_shift("ror", 302316761)
 
 check_binop_range("tohex", 47880306, -8, 8)
-
