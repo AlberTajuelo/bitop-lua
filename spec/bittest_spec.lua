@@ -1,7 +1,7 @@
 -- This file was taken from LuaBitOp http://bitop.luajit.org/ .
 -- Test cases for bit operations library. Public domain.
 
-local bit = require 'bit.numberlua'.bit
+local bit = require 'bitop.funcs'.bit
 
 local vb = {
   0, 1, -1, 2, -2, 0x12345678, 0x87654321,

@@ -15,6 +15,6 @@ dependencies = {
 build = {
    type = "builtin",
    modules = {
-      bitop = "src/bitop/funcs.lua"
+      [ "bitop.funcs" ] = "src/bitop/funcs.lua"
    }
 }

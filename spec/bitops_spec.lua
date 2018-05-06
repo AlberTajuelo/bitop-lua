@@ -1,7 +1,7 @@
 -- tests of bit.numberlua'
 
 package.path = 'lmod/?.lua;' .. package.path
-local bit = require 'bit.numberlua'
+local bit = require 'bitop.funcs'
 
 local function mystr(o)
   if type(o) == 'number' then return '0x'..bit.tohex(o)
@@ -11,7 +11,7 @@ local function checkeq(a, b)
   if a ~= b then error('not equal\n'..mystr(a)..'\n'..mystr(b), 2) end
 end
 
-describe('bit.numberlua class', function()
+describe('bitop.funcs class', function()
   describe('should do operations with bit', function()
 
     it('should work for different bit operations', function()
