@@ -45,15 +45,13 @@ before_install:
   - luarocks install luacheck
   - luarocks install busted
   - luarocks install luacov
-  - luarocks install luacov-coveralls
 
 install:
- - luarocks make
+  - luarocks make
 
 script:
   - luacheck src spec
   - busted -c
 
 after_success:
-  - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua_install
   - bash <(curl -s https://codecov.io/bash)

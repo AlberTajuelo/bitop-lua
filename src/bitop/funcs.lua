@@ -1,4 +1,4 @@
-local M = {_TYPE='module', _NAME='bitop.numberlua', _VERSION='dev'}
+local M = {_TYPE='module', _NAME='bitop.funcs', _VERSION='1.0-0'}
 
 local floor = math.floor
 
@@ -10,7 +10,6 @@ local function memoize(f)
   local mt = {}
   local t = setmetatable({}, mt)
 
-  print (mt)
   function mt:__index(k)
     local v = f(k)
     t[k] = v
@@ -30,14 +29,14 @@ local function make_bitop_uncached(t, m)
       b = (b - bm) / m
       p = p*m
     end
-    res = res + (a+b)*p
+    res = res + (a+b) * p
     return res
   end
   return bitop
 end
 
 local function make_bitop(t)
-  local op1 = make_bitop_uncached(t,2^1)
+  local op1 = make_bitop_uncached(t, 2^1)
   local op2 = memoize(function(a)
     return memoize(function(b)
       return op1(a, b)
@@ -46,7 +45,7 @@ local function make_bitop(t)
   return make_bitop_uncached(op2, 2^(t.n or 1))
 end
 
--- ok?  probably not if running on a 32-bit int Lua number type platform
+-- ok? probably not if running on a 32-bit int Lua number type platform
 function M.tobit(x)
   return x % 2^32
 end

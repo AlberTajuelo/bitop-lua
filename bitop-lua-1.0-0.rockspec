@@ -1,5 +1,5 @@
 package = "bitop-lua"
-version = "dev"
+version = "1.0-0"
 source = {
    url = "git+https://github.com/AlberTajuelo/bitop-lua.git"
 }
@@ -15,6 +15,6 @@ dependencies = {
 build = {
    type = "builtin",
    modules = {
-      bitop = "src/bitop/number.lua"
+      bitop = "src/bitop/funcs.lua"
    }
 }
