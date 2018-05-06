@@ -56,7 +56,7 @@ local function check_shift(name, r)
 end
 
 
-describe('bit.numberlua class', function()
+describe('bitop.funcs class', function()
   describe('should do operations with bit', function()
 
     it('should work for different bit operations', function()

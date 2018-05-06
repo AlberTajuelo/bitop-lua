@@ -41,7 +41,7 @@ This repository is based on David Manura (@davidm) work: https://github.com/davi
 
 ## Requirements
 
-None (other than Lua 5.1 or 5.2).
+None (other than Lua 5.1 or 5.2). Bitop-lua is not compatible with Lua 5.3 version (due [important define remove](https://www.freelists.org/post/luajit/Port-bitop-to-53,1)).
 
 ## Basic Usage
 
