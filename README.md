@@ -1,6 +1,21 @@
 # Bitop-lua
 
+[![Licence](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/AlberTajuelo/bitop-lua.svg)](https://travis-ci.org/AlberTajuelo/bitop-lua)
+[![codecov](https://codecov.io/gh/AlberTajuelo/bitop-lua/branch/master/graph/badge.svg)](https://codecov.io/gh/AlberTajuelo/bitop-lua)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
+
+## Contents
+
+* [Overview](#overview)
+* [Origin](#origin)
+* [Requirements](#requirements)
+* [Basic usage](#basic-usage)
+* [Documentation](#documentation)
+* [Development](#development)
+* [References](#references)
+
+## Overview
 
 This package provides bitwise operations implemented entirely in Lua.
 
@@ -28,23 +43,7 @@ This repository is based on David Manura (@davidm) work: https://github.com/davi
 
 None (other than Lua 5.1 or 5.2).
 
-## Usage
-
-```lua
-
-local bit = require 'bit.numberlua'
-print(bit.bor(0xff00ff00, 0x00ff00ff)) --> 0xffffffff
-
--- Interface providing strong Lua 5.2 'bit32' compatibility
-local bit32 = require 'bit.numberlua'.bit32
-assert(bit32.band(-1) == 0xffffffff)
-
--- Interface providing strong (LuaJIT) LuaBitOp 'bit' compatibility
-local bit = require 'bit.numberlua'.bit
-assert(bit.tobit(0xffffffff) == -1)
-```
-
-## Download/Installation
+## Basic Usage
 
 If using LuaRocks:
 ```
@@ -73,7 +72,24 @@ or unpack and install in LuaRocks:
 ./util.mk install
 ```
 
-## API
+And you can create a lua script file and play with Bitop.
+
+```lua
+
+local bit = require 'bit.numberlua'
+print(bit.bor(0xff00ff00, 0x00ff00ff)) --> 0xffffffff
+
+-- Interface providing strong Lua 5.2 'bit32' compatibility
+local bit32 = require 'bit.numberlua'.bit32
+assert(bit32.band(-1) == 0xffffffff)
+
+-- Interface providing strong (LuaJIT) LuaBitOp 'bit' compatibility
+local bit = require 'bit.numberlua'.bit
+assert(bit.tobit(0xffffffff) == -1)
+```
+
+
+## Documentation
 
 
 
@@ -174,7 +190,9 @@ This table contains functions that aim to provide 100% compatibility with the Lu
     bit.bswap(x) --> y
 
 
-## Testing Status
+## Development
+
+Bitop is currently in development.
 
 WARNING: Not all corner cases have been tested and documented.
 

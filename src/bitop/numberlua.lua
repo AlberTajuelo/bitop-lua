@@ -1,4 +1,4 @@
-local M = {_TYPE='module', _NAME='bit.numberlua', _VERSION='0.3.1.20120131'}
+local M = {_TYPE='module', _NAME='bitop.numberlua', _VERSION='dev'}
 
 local floor = math.floor
 
@@ -10,6 +10,7 @@ local function memoize(f)
   local mt = {}
   local t = setmetatable({}, mt)
 
+  print (mt)
   function mt:__index(k)
     local v = f(k)
     t[k] = v
