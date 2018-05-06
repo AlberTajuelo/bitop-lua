@@ -1,0 +1,21 @@
+
+return {
+
+  ["configfile"] = ".luacov",
+  ["statsfile"] = "luacov.stats.out",
+  ["reportfile"] = "luacov.report.out",
+  ["savestepsize"] = 100,
+  runreport = true,
+  deletestats = false,
+  codefromstrings = false,
+  ["include"] = { 'src/bitop' },
+  ["exclude"] = {
+    "luacov$",
+    "luacov/reporter$",
+    "luacov/defaults$",
+    "luacov/runner$",
+    "luacov/stats$",
+    "luacov/tick$",
+  },
+
+}

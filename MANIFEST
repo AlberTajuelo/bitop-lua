@@ -1,9 +1,0 @@
-COPYRIGHT
-CHANGES.txt
-README.txt
-MANIFEST
-rockspec.in
-dist.info
-test.lua
-util.mk
-lmod/bit/numberlua.lua

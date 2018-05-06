@@ -1,6 +1,5 @@
-# Bitop-lua
+# BitOp-lua
 
-[![Licence](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/AlberTajuelo/bitop-lua.svg)](https://travis-ci.org/AlberTajuelo/bitop-lua)
 [![codecov](https://codecov.io/gh/AlberTajuelo/bitop-lua/branch/master/graph/badge.svg)](https://codecov.io/gh/AlberTajuelo/bitop-lua)
 [![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
@@ -58,18 +57,8 @@ Alternately, if using GIT:
 git clone git://github.com/AlberTajuelo/bitop-lua.git
 
 cd bitop-lua 
-```
 
-Optionally unpack:
-
-```
-./util.mk
-```
-
-or unpack and install in LuaRocks:
-
-```
-./util.mk install
+luarocks make
 ```
 
 And you can create a lua script file and play with Bitop.
