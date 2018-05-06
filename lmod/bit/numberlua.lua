@@ -6,12 +6,16 @@ local MOD = 2^32
 local MODM = MOD-1
 
 local function memoize(f)
+
   local mt = {}
   local t = setmetatable({}, mt)
+
   function mt:__index(k)
-    local v = f(k); t[k] = v
+    local v = f(k)
+    t[k] = v
     return v
   end
+
   return t
 end
 
