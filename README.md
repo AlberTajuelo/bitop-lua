@@ -65,15 +65,15 @@ And you can create a lua script file and play with Bitop.
 
 ```lua
 
-local bit = require 'bit.numberlua'
+local bit = require 'bitop.funcs'
 print(bit.bor(0xff00ff00, 0x00ff00ff)) --> 0xffffffff
 
 -- Interface providing strong Lua 5.2 'bit32' compatibility
-local bit32 = require 'bit.numberlua'.bit32
+local bit32 = require 'bitop.funcs'.bit32
 assert(bit32.band(-1) == 0xffffffff)
 
 -- Interface providing strong (LuaJIT) LuaBitOp 'bit' compatibility
-local bit = require 'bit.numberlua'.bit
+local bit = require 'bitop.funcs'.bit
 assert(bit.tobit(0xffffffff) == -1)
 ```
 
